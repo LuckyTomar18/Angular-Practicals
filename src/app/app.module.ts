@@ -8,6 +8,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './signup/signup.component';  
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { RoleComponent } from './role/role.component';
+import { UserListComponent } from './user/user-list.component';
+import { RoleListComponent } from './role/role-list.component';
 
 
 @NgModule({
@@ -17,6 +22,11 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     FooterComponent,
     SignupComponent,
+    LoginComponent,
+    UserComponent,
+    RoleComponent,
+    UserListComponent,
+    RoleListComponent,
     
   ],
   imports: [

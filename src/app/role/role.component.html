@@ -1,0 +1,25 @@
+<div align="center">
+    <h1>Add role</h1>
+    <h3>{{form.message}}</h3>
+    <form (submit)="save()">
+        <table>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" [(ngModel)]="form.data.name"
+                        placeholder="enter your name"></td>
+                <td>{{form.inputerror.name}}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><input type="text" name="description" [(ngModel)]="form.data.description"
+                        placeholder="enter your description"></td>
+                <td>{{form.inputerror.description}}</td>
+            </tr>
+           
+            <tr>
+                <th></th>
+                <td><input type="submit" value="save"></td>
+            </tr>
+        </table>
+    </form>
+</div>
