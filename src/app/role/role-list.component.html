@@ -1,1 +1,24 @@
-<p>role-list works!</p>
+<div align="center">
+  <h1>Role List</h1>
+
+  <table>
+    <tr>
+      <th>Role Name</th>
+      <td><input type="text" name="name" [(ngModel)]="form.searchParam.name" placeholder="search by roleName">&nbsp;</td>
+      <td><input type="text" name="description" [(ngModel)]="form.searchParam.description" placeholder="search by description">&nbsp;</td>
+      <td><button (click)="search()">search</button></td>
+    </tr>
+  </table>
+  <table border="1" width="100%" >
+    <tr>
+      <th>Role ID</th>
+      <th>Role Name</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let role of form.list" align="center">
+      <td>{{ role.id }}</td>
+      <td>{{ role.name }}</td>
+      <td>{{ role.description }}</td>
+    </tr>
+  </table>
+</div>

@@ -1,1 +1,43 @@
-<p>user-list works!</p>
+<div align="center">
+    <h1>User List</h1>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <td><input type="text" name="firstName" [(ngModel)]="form.searchParam.firstName"
+                    placeholder="search by firstName">&nbsp;
+            </td>
+            <th>Last Name</th>
+            <td><input type="text" name="lastName" [(ngModel)]="form.searchParam.lastName" 
+                placeholder="search by lastName"></td>&nbsp;
+                 <th>Role Name</th>
+            <td><input type="text" name="roleName" [(ngModel)]="form.searchParam.roleName" 
+                placeholder="search by roleName"></td>&nbsp;
+            <td><button (click)="search()">search</button></td>
+        </tr>
+    </table>
+
+    <table width="100%" border="1px">
+
+        <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Login</th>
+            <th>Role Name</th>
+            <th>DOB</th>
+        </tr>
+        <tr *ngFor="let user of form.list" align="center">
+            <td>{{user.id}}</td>
+            <td><img src="http://localhost:8080/user/profilePic/{{user.id}}" height="70px" width="80px"></td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.loginId}}</td>
+            <td>{{user.roleName}}</td>
+            <td>{{user.dob | date:'dd-MM-yyyy'}}</td>
+        </tr>
+
+    </table>
+
+</div>

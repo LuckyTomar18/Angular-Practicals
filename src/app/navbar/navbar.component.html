@@ -1,16 +1,28 @@
-<div *ngIf="isLogin()">
-    <h2>Hi, {{form.data.firstName}} ({{form.data.roleName}})</h2>
-    <a href="/user">Add User</a> |
-    <a href="#">User List</a> |
-    <a href="/welcome">Welcome</a> |
-    <a (click)="logout()">Logout</a>
-    <hr>
-</div>
-
-
-<div *ngIf="!isLogin()">
-    <h2>Hi, Guest</h2>
-    <a href="/login">Login</a> |
-    <a href="/welcome">Welcome</a>
-    <hr>
-</div>
+<table>
+    <tr style="width: 100%;">
+        <td>
+            <div *ngIf="isLogin()">
+                <h2>Hi, {{form.data.firstName}} ({{form.data.roleName}})</h2>
+                <a href="/user">Add User</a> |
+                <a href="/userList">User List</a> |
+                <a href="/welcome">Welcome</a> |
+                <a href="/role">Add Role</a> |
+                <a href="/roleList">Role List</a> |
+                <a (click)="logout()">
+                    <font color="blue"><u>Logout</u></font>
+                </a>
+            </div>
+            <div *ngIf="!isLogin()">
+                <h2>Hi, Guest</h2>
+                <a href="/login">Login</a> |
+                <a href="/welcome">Welcome</a>
+            </div>
+        </td>
+        <td style="width: 2%;">
+            <div *ngIf="isLogin()">
+                <img src="http://localhost:8080/user/profilePic/{{form.data.id}}" height="80px" width="80px">
+            </div>
+        </td>
+    </tr>
+</table>
+<hr>
