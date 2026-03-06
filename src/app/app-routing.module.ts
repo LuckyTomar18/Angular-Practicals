@@ -46,6 +46,14 @@ redirectTo : 'welcome'
 {
 path: 'roleList',
 component: RoleListComponent
+},
+{
+  path : 'user/:id',
+  component : UserComponent
+},
+{
+  path : 'role/:id',
+  component : RoleComponent
 }
 ];
 

@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
-import{ Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { HttpServiceService } from '../http-service.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-constructor(private router: Router) { }
 
-form:any = {  
-data: {}
-}
- isLogin() {
+  constructor(private router: Router, private httpService: HttpServiceService) { }
+
+  form: any = {
+    data: {}
+  }
+
+  isLogin() {
 
     let check = localStorage.getItem('firstName');
 
@@ -27,7 +31,10 @@ data: {}
 
   logout() {
     localStorage.clear();
-    this.router.navigateByUrl('/login?message=Logout successfully');
+    this.router.navigateByUrl('/login?message=user logout successfully')
+    this.httpService.get('http://localhost:8080/Auth/logout', function (res: any) {
+      console.log('Logout response:', res);
+    });
   }
 
 }

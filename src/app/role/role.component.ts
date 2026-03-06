@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { HttpServiceService } from '../http-service.service'; 
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-role',
   templateUrl: './role.component.html',
@@ -7,7 +8,11 @@ import { HttpServiceService } from '../http-service.service';
 })
 export class RoleComponent {
 
-  constructor(private httpService: HttpServiceService) { }
+  constructor(private httpService: HttpServiceService , private route: ActivatedRoute) {
+this.route.params.subscribe((pathVariable: any) => {
+  this.form.data.id = pathVariable['id'];
+})
+   }
 
   endpoint = 'http://localhost:8080/role/save';
 
@@ -16,6 +21,18 @@ export class RoleComponent {
     message: '',
     inputerror: {}
     
+  }
+  ngOnInit(): void {
+    if (this.form.data.id && this.form.data.id > 0) {
+      this.display();
+    }
+}
+
+  display() {
+    var self = this;
+    this.httpService.get('http://localhost:8080/role/get/' + this.form.data.id, function (res: any) {
+      self.form.data = res.result.data;
+    })
   }
 
  save() {

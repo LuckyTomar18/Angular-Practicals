@@ -1,5 +1,6 @@
 <div align="center">
-    <h1>Add role</h1>
+    <h1 *ngIf="form.data.id">Update Role</h1>
+    <h1 *ngIf="!form.data.id">Add Role</h1>
     <h3>{{form.message}}</h3>
     <form (submit)="save()">
         <table>
@@ -16,9 +17,10 @@
                 <td>{{form.inputerror.description}}</td>
             </tr>
            
-            <tr>
+           <tr>
                 <th></th>
-                <td><input type="submit" value="save"></td>
+                <td *ngIf="form.data.id"><input type="submit" value="update"></td>
+                <td *ngIf="!form.data.id"><input type="submit" value="save"></td>
             </tr>
         </table>
     </form>

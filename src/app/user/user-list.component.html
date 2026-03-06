@@ -1,5 +1,6 @@
 <div align="center">
     <h1>User List</h1>
+      <h3> <div *ngIf="form.message" align="center" style="color:green">{{form.message}}</div></h3> 
 
     <table>
         <tr>
@@ -10,16 +11,21 @@
             <th>Last Name</th>
             <td><input type="text" name="lastName" [(ngModel)]="form.searchParam.lastName" 
                 placeholder="search by lastName"></td>&nbsp;
-                 <th>Role Name</th>
-            <td><input type="text" name="roleName" [(ngModel)]="form.searchParam.roleName" 
-                placeholder="search by roleName"></td>&nbsp;
+                 <th>Role</th>
+            <td>
+                <select name="roleId" [(ngModel)]="form.searchParam.roleId">
+                    <option [ngValue]="" value="undefined">{{'---------Select Role---------' }}</option>
+                     <option *ngFor="let role of form.roleList" [ngValue]="role.key">{{role.value}}</option>
+                </select>
+            </td>
             <td><button (click)="search()">search</button></td>
         </tr>
     </table>
 
     <table width="100%" border="1px">
 
-        <tr>
+        <tr style="background-color: skyblue;">
+            <th>Select</th> 
             <th>Id</th>
             <th>Image</th>
             <th>First Name</th>
@@ -27,8 +33,10 @@
             <th>Login</th>
             <th>Role Name</th>
             <th>DOB</th>
+            <th>Edit</th> 
         </tr>
         <tr *ngFor="let user of form.list" align="center">
+            <td align="center"><input type="checkbox" (change)="onCheckboxChange(user.id)"></td>
             <td>{{user.id}}</td>
             <td><img src="http://localhost:8080/user/profilePic/{{user.id}}" height="70px" width="80px"></td>
             <td>{{user.firstName}}</td>
@@ -36,8 +44,15 @@
             <td>{{user.loginId}}</td>
             <td>{{user.roleName}}</td>
             <td>{{user.dob | date:'dd-MM-yyyy'}}</td>
+            <td><a (click)="edit('/user/' + user.id)"><span style="color: blue;">Edit</span></a></td> 
         </tr>
 
     </table>
-
+    <table width="100%">
+        <tr>
+            <td><button [disabled]="form.pageNo == 0" (click)="previous()">Previous</button></td>
+            <td><button (click)="delete()">delete</button></td>
+            <td align="right"><button [disabled]="form.list.length < 5" (click)="next()">Next</button></td>
+        </tr>
+    </table>
 </div>
